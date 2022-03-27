@@ -17,10 +17,11 @@ body {
     align-items: center;
     max-width: 1080px;
     margin: 0 auto;
-    padding: 10px 0;
+    padding: 10px 20px;
   }
 
   .bottom {
+    padding: 0 20px;
 
     background-color: #0abe5f;
 
@@ -82,7 +83,7 @@ body {
 
   ul {
     display: flex;
-
+align-items: center;
 
     li {
       padding: 15px 25px;
@@ -512,7 +513,8 @@ body {
 .recipeContent {
   max-width: 1080px;
   margin: 0 auto;
-  padding-right: 360px;
+  //padding-right: 360px;
+  padding: 0 25px;
 }
 
 .titleBlock {
