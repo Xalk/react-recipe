@@ -10,6 +10,7 @@ import Recipe from "./pages/Recipe";
 
 const App: React.FC = () => {
     return (
+
         <div className="wrapper">
 
             <Header/>

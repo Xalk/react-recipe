@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
 import '@splidejs/splide/dist/css/splide.min.css';
 
@@ -9,6 +9,9 @@ import about2 from "../assets/about-2.jpg";
 import about3 from "../assets/about-3.jpg";
 import favInactive from "../assets/fav-inactive .svg";
 import {NavLink} from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "../hooks/hooks";
+import {fetchRecipes} from "../redux/features/recipesSlice";
+
 
 interface HomeProps {
 
@@ -16,6 +19,17 @@ interface HomeProps {
 
 
 const Home: React.FC<HomeProps> = () => {
+
+    const dispatch = useAppDispatch();
+    const recipesList = useAppSelector(state => state.recipes.recipesList)
+
+    console.log(recipesList);
+
+    useEffect(() => {
+        dispatch(fetchRecipes());
+    }, [])
+
+
     return (
         <div className="content">
             <div className="sliderBlock">
@@ -25,9 +39,12 @@ const Home: React.FC<HomeProps> = () => {
                 </p>
                 <div className="slider">
                     <Splide options={{
+                        type: "loop",
                         perPage: 3,
                         gap: 50,
-                        pagination: false
+                        pagination: false,
+                        autoplay: true,
+                        interval: 5000
                     }}>
                         <SplideSlide>
                             <NavLink to="/recipe">
@@ -41,8 +58,6 @@ const Home: React.FC<HomeProps> = () => {
                                             <img src={star} alt="star"/>
                                             <img src={star} alt="star"/>
                                             <img src={star} alt="star"/>
-
-
                                         </div>
                                         <div className="title">
                                             Andouille and Beef Burgers with Spicy Mayo and Caramelized Onions
