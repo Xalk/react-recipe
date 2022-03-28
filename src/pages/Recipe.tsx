@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import ava from "../assets/ava.jpeg";
 import printBtn from "../assets/printBtn.svg";
 import fullScreenBtn from "../assets/fullScreenBtn.svg";
@@ -6,6 +6,9 @@ import star from "../assets/star.svg";
 import favInactive from "../assets/fav-inactive .svg";
 import burger from "../assets/buger.jpg";
 import clock from "../assets/clock.svg";
+import {useParams} from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "../hooks/hooks";
+import {fetchRecipeInfo} from "../redux/features/recipeInfoSlice";
 
 interface RecipeProps {
 
@@ -13,11 +16,22 @@ interface RecipeProps {
 
 
 const Recipe: React.FC<RecipeProps> = () => {
+    const {id} = useParams() as { id: string };
+    const dispatch = useAppDispatch();
+
+    const recipeInfo = useAppSelector(state => state.recipePage.recipeInfo)
+
+    useEffect(() => {
+        dispatch(fetchRecipeInfo(id));
+    }, [])
+
     return (
         <div className="recipe">
             <div className="titleBlock">
                 <h2>
-                    Andouille and Beef Burgers with Spicy Mayo and Caramelized Onions
+                    {
+                        recipeInfo?.title
+                    }
                 </h2>
             </div>
 
@@ -91,9 +105,12 @@ const Recipe: React.FC<RecipeProps> = () => {
                     </div>
                 </div>
                 <div className="shortInfo">
-                    <p>Prolific cookbook author James McNair has been chief judge of Sutter Home Winery's burger
-                        cook-off since it began in Napa in 1990.</p>
-                    <img src={burger} alt="recipePhoto"/>
+                    <p>
+                        {
+                            recipeInfo?.summary
+                        }
+                    </p>
+                    <img src={recipeInfo?.image} alt="recipePhoto"/>
                     <div className="shareBlock">
                         <div className="grayLine"></div>
                         <ul>

@@ -1,5 +1,4 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {RootState} from "../store";
 import {IRecipe} from '../types';
 import {recipeAPI} from "../../api/api";
 
@@ -27,7 +26,6 @@ export const fetchRecipes = createAsyncThunk<IRecipe[], number>(
 
 export const recipesSlice = createSlice({
     name: 'recipes',
-    // `createSlice` will infer the state type from the `initialState` argument
     initialState,
     reducers: {
         setRecipes(state, action) {
