@@ -7,10 +7,12 @@ import star from "../assets/star.svg";
 import about1 from "../assets/about-1.jpg";
 import about2 from "../assets/about-2.jpg";
 import about3 from "../assets/about-3.jpg";
+import noImageFound from "../assets/noImageFound.svg";
 import favInactive from "../assets/fav-inactive .svg";
 import {NavLink} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../hooks/hooks";
-import {fetchRecipes} from "../redux/features/recipesSlice";
+import {fetchRecipes, setRecipes} from "../redux/features/recipesSlice";
+import Card from "../components/Card/Card";
 
 
 interface HomeProps {
@@ -21,14 +23,22 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = () => {
 
     const dispatch = useAppDispatch();
-    const recipesList = useAppSelector(state => state.recipes.recipesList)
+    const {recipesList, sliderRecipes} = useAppSelector(state => state.recipes)
 
-    console.log(recipesList);
 
     useEffect(() => {
-        dispatch(fetchRecipes());
+        initRecipes();
     }, [])
 
+    const initRecipes = () => {
+        const recipesListDB = localStorage.getItem("recipesList");
+        if (recipesListDB) {
+            dispatch(setRecipes(JSON.parse(recipesListDB)));
+        } else {
+            dispatch(fetchRecipes(6));
+            localStorage.setItem("recipesList", JSON.stringify(recipesList));
+        }
+    }
 
     return (
         <div className="content">
@@ -43,103 +53,43 @@ const Home: React.FC<HomeProps> = () => {
                         perPage: 3,
                         gap: 50,
                         pagination: false,
-                        autoplay: true,
-                        interval: 5000
+                        // autoplay: true,
+                        // interval: 5000
                     }}>
-                        <SplideSlide>
-                            <NavLink to="/recipe">
-                                <div className="card">
 
-                                    <img src={burger} alt="burger"/>
-                                    <div className="info">
-                                        <div className="rating">
-                                            <img src={star} alt="star"/>
-                                            <img src={star} alt="star"/>
-                                            <img src={star} alt="star"/>
-                                            <img src={star} alt="star"/>
-                                            <img src={star} alt="star"/>
-                                        </div>
-                                        <div className="title">
-                                            Andouille and Beef Burgers with Spicy Mayo and Caramelized Onions
-                                        </div>
-                                        <div className="line"></div>
-                                        <div className="author">
-                                            By <strong>Justin S.</strong>
-                                        </div>
-                                    </div>
+                        {
+                            sliderRecipes?.map(r => {
+                                return (
+                                    <SplideSlide key={r.id}>
+                                        <NavLink to={`/recipe/${r.id}`}>
+                                            <div className="card">
 
-                                </div>
-                            </NavLink>
-                        </SplideSlide>
-                        <SplideSlide>
-                            <div className="card">
-                                <img src={burger} alt="burger"/>
-                                <div className="info">
-                                    <div className="rating">
-                                        <img src={star} alt="star"/>
-                                        <img src={star} alt="star"/>
-                                        <img src={star} alt="star"/>
-                                        <img src={star} alt="star"/>
-                                        <img src={star} alt="star"/>
+                                                <img src={r.image} alt="burger"/>
+                                                <div className="info">
+                                                    <div className="rating">
+                                                        <img src={star} alt="star"/>
+                                                        <img src={star} alt="star"/>
+                                                        <img src={star} alt="star"/>
+                                                        <img src={star} alt="star"/>
+                                                        <img src={star} alt="star"/>
+                                                    </div>
+                                                    <div className="title">
+                                                        {r.title}
+                                                    </div>
+                                                    <div className="line"></div>
+                                                    <div className="author">
+                                                        By <strong>Justin S.</strong>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </NavLink>
+                                    </SplideSlide>
+                                )
+                            })
+                        }
 
 
-                                    </div>
-                                    <div className="title">
-                                        Andouille and Beef Burgers with Spicy Mayo and Caramelized Onions
-                                    </div>
-                                    <div className="line"></div>
-                                    <div className="author">
-                                        By <strong>Justin S.</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </SplideSlide>
-                        <SplideSlide>
-                            <div className="card">
-                                <img src={burger} alt="burger"/>
-                                <div className="info">
-                                    <div className="rating">
-                                        <img src={star} alt="star"/>
-                                        <img src={star} alt="star"/>
-                                        <img src={star} alt="star"/>
-                                        <img src={star} alt="star"/>
-                                        <img src={star} alt="star"/>
-
-
-                                    </div>
-                                    <div className="title">
-                                        Andouille and Beef Burgers with Spicy Mayo and Caramelized Onions
-                                    </div>
-                                    <div className="line"></div>
-                                    <div className="author">
-                                        By <strong>Justin S.</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </SplideSlide>
-                        <SplideSlide>
-                            <div className="card">
-                                <img src={burger} alt="burger"/>
-                                <div className="info">
-                                    <div className="rating">
-                                        <img src={star} alt="star"/>
-                                        <img src={star} alt="star"/>
-                                        <img src={star} alt="star"/>
-                                        <img src={star} alt="star"/>
-                                        <img src={star} alt="star"/>
-
-
-                                    </div>
-                                    <div className="title">
-                                        Andouille and Beef Burgers with Spicy Mayo and Caramelized Onions
-                                    </div>
-                                    <div className="line"></div>
-                                    <div className="author">
-                                        By <strong>Justin S.</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </SplideSlide>
                     </Splide>
                 </div>
             </div>
@@ -179,162 +129,10 @@ const Home: React.FC<HomeProps> = () => {
                     <button className="greenBtn">View All Recipes</button>
                 </div>
                 <div className="recipesGrid">
-                    <div className="card">
-                        <div className="innerCard">
-                            <img src={burger} alt="burger"/>
-                            <div className="info">
-                                <div className="rating">
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
 
-
-                                </div>
-                                <div className="title">
-                                    Andouille and Beef Burgers with Spicy Mayo and Caramelized Onions
-                                </div>
-                                <div className="line"></div>
-                                <div className="author">
-                                    By <strong>Justin S.</strong>
-                                </div>
-                            </div>
-                            <div className="favBtn">
-                                <img src={favInactive} alt=""/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="innerCard">
-                            <img src={burger} alt="burger"/>
-                            <div className="info">
-                                <div className="rating">
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-
-
-                                </div>
-                                <div className="title">
-                                    Andouille and Beef Burgers with Spicy Mayo and Caramelized Onions
-                                </div>
-                                <div className="line"></div>
-                                <div className="author">
-                                    By <strong>Justin S.</strong>
-                                </div>
-                            </div>
-                            <div className="favBtn">
-                                <img src={favInactive} alt=""/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="innerCard">
-                            <img src={burger} alt="burger"/>
-                            <div className="info">
-                                <div className="rating">
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-
-
-                                </div>
-                                <div className="title">
-                                    Andouille and Beef Burgers with Spicy Mayo and Caramelized Onions
-                                </div>
-                                <div className="line"></div>
-                                <div className="author">
-                                    By <strong>Justin S.</strong>
-                                </div>
-                            </div>
-                            <div className="favBtn">
-                                <img src={favInactive} alt=""/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="innerCard">
-                            <img src={burger} alt="burger"/>
-                            <div className="info">
-                                <div className="rating">
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-
-
-                                </div>
-                                <div className="title">
-                                    Andouille and Beef Burgers with Spicy Mayo and Caramelized Onions
-                                </div>
-                                <div className="line"></div>
-                                <div className="author">
-                                    By <strong>Justin S.</strong>
-                                </div>
-                            </div>
-                            <div className="favBtn">
-                                <img src={favInactive} alt=""/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="innerCard">
-                            <img src={burger} alt="burger"/>
-                            <div className="info">
-                                <div className="rating">
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-
-
-                                </div>
-                                <div className="title">
-                                    Andouille and Beef Burgers with Spicy Mayo and Caramelized Onions
-                                </div>
-                                <div className="line"></div>
-                                <div className="author">
-                                    By <strong>Justin S.</strong>
-                                </div>
-                            </div>
-                            <div className="favBtn">
-                                <img src={favInactive} alt=""/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="innerCard">
-                            <img src={burger} alt="burger"/>
-                            <div className="info">
-                                <div className="rating">
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-                                    <img src={star} alt="star"/>
-
-
-                                </div>
-                                <div className="title">
-                                    Andouille and Beef Burgers with Spicy Mayo and Caramelized Onions
-                                </div>
-                                <div className="line"></div>
-                                <div className="author">
-                                    By <strong>Justin S.</strong>
-                                </div>
-                            </div>
-                            <div className="favBtn">
-                                <img src={favInactive} alt=""/>
-                            </div>
-                        </div>
-                    </div>
+                    {
+                        recipesList?.map(r => <Card key={r.id} title={r.title} image={r.image}/>)
+                    }
 
                 </div>
             </div>

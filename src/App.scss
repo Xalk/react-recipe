@@ -83,7 +83,7 @@ body {
 
   ul {
     display: flex;
-align-items: center;
+    align-items: center;
 
     li {
       padding: 15px 25px;
@@ -204,6 +204,7 @@ align-items: center;
 
   .card {
     cursor: pointer;
+    color: #333333;
 
     &:hover {
       .line {

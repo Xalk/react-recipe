@@ -9,11 +9,13 @@ let baseApi = axios.create({
 })
 
 
+interface responseRecipes {
+    recipes: IRecipe[]
+}
 
 
 export let recipeAPI = {
-    getRecipesList() {
-        return baseApi.get<IRecipe[]>(`random?apiKey=${API}&number=6`).then(res => res.data);
-
+    getRecipesList(limit: number) {
+        return baseApi.get<responseRecipes>(`random?apiKey=${API}&number=${limit}`).then(res => res.data.recipes);
     }
 }
