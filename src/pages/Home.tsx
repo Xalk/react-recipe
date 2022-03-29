@@ -7,7 +7,6 @@ import star from "../assets/star.svg";
 import about1 from "../assets/about-1.jpg";
 import about2 from "../assets/about-2.jpg";
 import about3 from "../assets/about-3.jpg";
-import noImageFound from "../assets/noImageFound.svg";
 import favInactive from "../assets/fav-inactive .svg";
 import {NavLink} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../hooks/hooks";
@@ -30,13 +29,13 @@ const Home: React.FC<HomeProps> = () => {
         initRecipes();
     }, [])
 
-    const initRecipes = () => {
+    const initRecipes = async () => {
         const recipesListDB = localStorage.getItem("recipesList");
         if (recipesListDB) {
             dispatch(setRecipes(JSON.parse(recipesListDB)));
         } else {
-            dispatch(fetchRecipes(6));
-            localStorage.setItem("recipesList", JSON.stringify(recipesList));
+            let res = await dispatch(fetchRecipes(6));
+            localStorage.setItem("recipesList", JSON.stringify(res.payload));
         }
     }
 

@@ -736,13 +736,17 @@ body {
       input {
         margin-right: 5px;
 
+        &:checked + span{
+          opacity: 0.5;
+          text-decoration: line-through;
+        }
       }
     }
 
-    li.active {
-      text-decoration: line-through;
-      opacity: 0.5;
-    }
+    //li.active {
+    //  text-decoration: line-through;
+    //  opacity: 0.5;
+    //}
 
   }
 }
@@ -764,8 +768,10 @@ body {
 
   ul {
     li {
+      display: flex;
       line-height: 1.5em;
       font-size: 16px;
+      margin-bottom: 10px;
 
       span {
         font-size: 24px;
