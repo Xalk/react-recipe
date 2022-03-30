@@ -12,6 +12,7 @@ import {NavLink} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../hooks/hooks";
 import {fetchRecipes, setRecipes} from "../redux/features/recipesSlice";
 import Card from "../components/Card/Card";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 
 interface HomeProps {
@@ -20,6 +21,8 @@ interface HomeProps {
 
 
 const Home: React.FC<HomeProps> = () => {
+
+    const {width} = useWindowDimensions();
 
     const dispatch = useAppDispatch();
     const {recipesList, sliderRecipes} = useAppSelector(state => state.recipes)
@@ -48,12 +51,10 @@ const Home: React.FC<HomeProps> = () => {
                 </p>
                 <div className="slider">
                     <Splide options={{
-                        type: "loop",
-                        perPage: 3,
+                        perPage: width < 760 ? 1 : 3,
                         gap: 50,
                         pagination: false,
-                        // autoplay: true,
-                        // interval: 5000
+                        drag: "free"
                     }}>
 
                         {
@@ -130,7 +131,7 @@ const Home: React.FC<HomeProps> = () => {
                 <div className="recipesGrid">
 
                     {
-                        recipesList?.map(r => <Card key={r.id} title={r.title} image={r.image}/>)
+                        recipesList?.map(r => <Card key={r.id} title={r.title} image={r.image} id={r.id}/>)
                     }
 
                 </div>

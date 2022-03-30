@@ -15,7 +15,7 @@ const Footer: React.FC<FooterProps> = () => {
     return (
         <div className="footer">
             <div className="infoBlock">
-                <div className="premium">
+                <div>
                     <img src={logoFooter} alt="logo-footer"/>
                     <p>
                         Basil is a premium recipe theme for WordPress that works alongside the Cooked Pro plugin
@@ -24,7 +24,7 @@ const Footer: React.FC<FooterProps> = () => {
                     </p>
                     <button className="greenBtn">Purchase Basil</button>
                 </div>
-                <div className="recent">
+                <div>
                     <img src={cooked} alt="recent"/>
                     <p>
                         Basil is a premium recipe theme for WordPress that works alongside the Cooked Pro plugin
@@ -33,7 +33,7 @@ const Footer: React.FC<FooterProps> = () => {
                     </p>
                     <button className="greenBtn">Purchase Basil</button>
                 </div>
-                <div className="plugin">
+                <div>
                     <img src={cooked} alt="logo-cooked"/>
                     <p>
                         Cooked Pro is the powerful recipe plugin that's included with the Basil theme. It handles

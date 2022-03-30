@@ -120,7 +120,7 @@ const Recipe: React.FC<RecipeProps> = () => {
                                 <div className="difficulty">
                                     <ul>
                                         <li>Difficulty</li>
-                                        <li>Intermediates</li>
+                                        <li>Intermediate</li>
                                     </ul>
                                 </div>
                                 <img src={favInactive} alt="fav" width={32}/>
@@ -215,7 +215,13 @@ const Recipe: React.FC<RecipeProps> = () => {
                                 {
                                     extendedIngredients?.map(ing => {
                                         return (
-                                            <li key={ing.id}><input type="checkbox"/><span>{ing.original}</span></li>
+                                            // <li key={ing.id}><input type="checkbox"/><span>{ing.original}</span></li>
+
+                                            <li key={ing.id}>
+                                                <input type="checkbox" id={ing.id.toString()} name={ing.id.toString()} value="todo"/>
+                                                <label htmlFor={ing.id.toString()}>{ing.original}</label>
+                                            </li>
+
                                         )
                                     })
                                 }

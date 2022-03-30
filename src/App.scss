@@ -36,16 +36,19 @@ body {
     }
   }
 
+  .hamBlock {
+    display: none;
+
+    img {
+      cursor: pointer;
+    }
+  }
+
   .rightSide {
     display: flex;
+    justify-content: center;
     gap: 20px;
 
-    .hamBlock {
-      display: none;
-      img{
-        cursor: pointer;
-      }
-    }
 
     button {
       background-color: #ea675d;
@@ -95,6 +98,24 @@ body {
     display: flex;
     align-items: center;
 
+    .downArrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        transition: transform 0.2s;
+        padding-left: 5px;
+      }
+
+    }
+
+    li.downArrow:hover {
+      svg {
+        transform: rotateX(180deg);
+      }
+    }
+
     li {
       padding: 15px 25px;
       cursor: pointer;
@@ -103,20 +124,23 @@ body {
       line-height: 21px;
       text-align: left;
 
-      //span:after {
-      //  content: "🔽";
-      //}
 
       &:hover {
         background-color: #1acc6d;
 
+
         ul.dropdown {
-          visibility: visible; /* Display the dropdown */
+          visibility: visible;
           opacity: 1;
 
           li {
             visibility: visible;
             opacity: 1;
+
+            &:hover {
+              background-color: initial;
+              color: #ea675d;
+            }
           }
         }
       }
@@ -458,27 +482,27 @@ body {
 }
 
 
-.premium, .recent, .plugin {
-  width: 33%;
-  padding: 20px;
+.infoBlock {
+  div {
+    width: 33%;
+    padding: 20px;
+  }
+
 
   img {
     margin-bottom: 20px;
     width: 200px;
   }
+
+
 }
 
-.premium {
-}
-
-.recent {
-}
-
-.plugin {
+.infoBlock div:last-child {
   .greenBtn {
     background: #ffad11;
   }
 }
+
 
 .bottomFooter {
   max-width: 1080px;
@@ -516,6 +540,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:hover {
+    transform: translateY(-2px);
+
+    svg {
+      fill: #d54e21
+    }
+  }
 
   img {
     width: 18px;
@@ -574,6 +606,8 @@ body {
       width: 40px;
       margin-right: 10px;
     }
+
+
   }
 
 
@@ -678,7 +712,7 @@ body {
 }
 
 .timeBlock {
-  padding: 20px 0;
+  padding: 50px 0;
 
   img {
     width: 40px;
@@ -744,22 +778,29 @@ body {
     font-size: 16px;
 
     li {
-      margin-top: 8px;
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+
+      label {
+        cursor: pointer;
+      }
 
       input {
-        margin-right: 5px;
+        cursor: pointer;
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
 
-        &:checked + span {
+        &:checked + label {
           opacity: 0.5;
           text-decoration: line-through;
         }
       }
+
+
     }
 
-    //li.active {
-    //  text-decoration: line-through;
-    //  opacity: 0.5;
-    //}
 
   }
 }
@@ -848,19 +889,19 @@ body {
 @media (max-width: 760px) {
 
   .header {
-    .rightSide {
-      .hamBlock {
-        display: initial;
-      }
+    .hamBlock {
+      display: initial;
     }
   }
 
 
   .header {
     position: relative;
+
     .bottom {
       width: 100%;
       position: absolute;
+      z-index: 2;
       padding: 0;
       background: white;
       transform: translateY(-100%);
@@ -868,7 +909,8 @@ body {
       transition: transform 0.15s ease-in-out, visibility 0.15s ease-in-out;
 
     }
-    .bottom.visible{
+
+    .bottom.visible {
       visibility: visible;
       transform: translateY(0);
     }
@@ -887,6 +929,12 @@ body {
         width: 100%;
         flex-direction: column;
 
+        .downArrow {
+          svg {
+            display: none;
+          }
+        }
+
         li {
           width: 100%;
           text-align: center;
@@ -902,10 +950,86 @@ body {
           &:hover {
             background-color: initial;
             color: #04723f;
-
           }
         }
+
+
       }
+    }
+  }
+
+  .aboutBox {
+    flex-direction: column;
+  }
+
+  .recipesGrid {
+    .card {
+      width: 100%;
+    }
+  }
+
+  .infoBlock {
+    flex-direction: column;
+  }
+  .infoBlock {
+    div {
+      width: 100%;
+    }
+
+  }
+  .splide__slide {
+    width: 100% !important;
+  }
+
+  .sliderBlock {
+    h1 {
+      font-size: 38px;
+    }
+
+    p {
+      span {
+        font-size: 22px;
+      }
+
+      font-size: 22px;
+    }
+
+  }
+
+  .recipeHeader {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 50px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .rightSide, .leftSide {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  .shareBlock {
+    ul {
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+
+      li {
+        margin: 0;
+      }
+
+      li:first-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .timeBlock {
+    ul {
+      flex-wrap: wrap;
+      gap: 25px;
     }
   }
 }
