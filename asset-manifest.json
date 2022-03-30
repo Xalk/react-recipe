@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/react-recipe/static/css/main.54b842ab.css",
+    "main.js": "/react-recipe/static/js/main.07a1d42c.js",
+    "static/media/bg-30.jpg": "/react-recipe/static/media/bg-30.0fc14917a229b0cc74f4.jpg",
+    "static/media/bg2.jpg": "/react-recipe/static/media/bg2.9359720a0cf1ff5bfbda.jpg",
+    "static/media/about-2.jpg": "/react-recipe/static/media/about-2.dde7a68748a63afcf187.jpg",
+    "static/media/about-3.jpg": "/react-recipe/static/media/about-3.d462c7a4f377be65af59.jpg",
+    "static/media/about-1.jpg": "/react-recipe/static/media/about-1.58a37ec89c574ff4c35d.jpg",
+    "static/media/logoRefus.svg": "/react-recipe/static/media/logoRefus.d61b05bf36ec9ed746a29587a25d5e6f.svg",
+    "static/media/textLogo.svg": "/react-recipe/static/media/textLogo.f2d4219adea6b40b4a82c637ec8ae28a.svg",
+    "static/media/fav-inactive .svg": "/react-recipe/static/media/fav-inactive .00afb22d0db95c841d1f92599ec1bfe5.svg",
+    "static/media/instagram-brands.svg": "/react-recipe/static/media/instagram-brands.b681aafb5f181032b187bafdbf0c03bc.svg",
+    "index.html": "/react-recipe/index.html",
+    "static/media/clock.svg": "/react-recipe/static/media/clock.33b6b7d949432a0fa3e32920ae8b8674.svg",
+    "static/media/twitter-brands.svg": "/react-recipe/static/media/twitter-brands.7b85b8a2ed27b896ca355bf48ac7c356.svg",
+    "static/media/fullScreenBtn.svg": "/react-recipe/static/media/fullScreenBtn.c2068c58bdda439e26e0b0f559ea76c5.svg",
+    "static/media/star.svg": "/react-recipe/static/media/star.7cf507364571d273ed10f85eaddb64a8.svg",
+    "static/media/youtube-brands.svg": "/react-recipe/static/media/youtube-brands.2840c1d68573c49c91f837466339be7f.svg",
+    "static/media/search.svg": "/react-recipe/static/media/search.3370a1787f3b47e6d993fe46e75dec3a.svg",
+    "static/media/facebook-brands.svg": "/react-recipe/static/media/facebook-brands.a7c042f8776a5e7f3831bce88fd6285b.svg",
+    "static/media/hamburger-menu.svg": "/react-recipe/static/media/hamburger-menu.68a08bc2c19ad4dad03a93969c017a5c.svg",
+    "static/media/printBtn.svg": "/react-recipe/static/media/printBtn.9596d669eb65636a5257eb5a7038ebe8.svg",
+    "main.54b842ab.css.map": "/react-recipe/static/css/main.54b842ab.css.map",
+    "main.07a1d42c.js.map": "/react-recipe/static/js/main.07a1d42c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.54b842ab.css",
+    "static/js/main.07a1d42c.js"
+  ]
+}
