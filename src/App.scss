@@ -18,6 +18,9 @@ body {
     max-width: 1080px;
     margin: 0 auto;
     padding: 10px 20px;
+    background-color: white;
+    position: relative;
+    z-index: 10;
   }
 
   .bottom {
@@ -36,6 +39,13 @@ body {
   .rightSide {
     display: flex;
     gap: 20px;
+
+    .hamBlock {
+      display: none;
+      img{
+        cursor: pointer;
+      }
+    }
 
     button {
       background-color: #ea675d;
@@ -93,6 +103,9 @@ body {
       line-height: 21px;
       text-align: left;
 
+      //span:after {
+      //  content: "🔽";
+      //}
 
       &:hover {
         background-color: #1acc6d;
@@ -736,7 +749,7 @@ body {
       input {
         margin-right: 5px;
 
-        &:checked + span{
+        &:checked + span {
           opacity: 0.5;
           text-decoration: line-through;
         }
@@ -826,6 +839,72 @@ body {
 
       span {
         font-weight: 600;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 760px) {
+
+  .header {
+    .rightSide {
+      .hamBlock {
+        display: initial;
+      }
+    }
+  }
+
+
+  .header {
+    position: relative;
+    .bottom {
+      width: 100%;
+      position: absolute;
+      padding: 0;
+      background: white;
+      transform: translateY(-100%);
+      visibility: hidden;
+      transition: transform 0.15s ease-in-out, visibility 0.15s ease-in-out;
+
+    }
+    .bottom.visible{
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+
+  .menu {
+    .social {
+      display: none;
+    }
+
+    .buttons {
+      width: 100%;
+
+      ul {
+        width: 100%;
+        flex-direction: column;
+
+        li {
+          width: 100%;
+          text-align: center;
+          color: #0abe5f;
+          font-weight: 600;
+          font-size: 17px;
+          border-bottom: 1px solid #ededed;
+
+          ul {
+            display: none;
+          }
+
+          &:hover {
+            background-color: initial;
+            color: #04723f;
+
+          }
+        }
       }
     }
   }

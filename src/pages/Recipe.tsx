@@ -20,10 +20,15 @@ const Recipe: React.FC<RecipeProps> = () => {
     const {id} = useParams() as { id: string };
     const dispatch = useAppDispatch();
 
-    const recipeInfo = useAppSelector(state => state.recipePage.recipeInfo);
+    const {
+        summary,
+        image,
+        extendedIngredients,
+        analyzedInstructions,
+        title
+    } = useAppSelector(state => state.recipePage.recipeInfo);
     const isLoading = useAppSelector(state => state.recipePage.isLoading);
 
-    const [analyzedInstructions] = recipeInfo?.analyzedInstructions || [];
 
     useEffect(() => {
         dispatch(fetchRecipeInfo(id));
@@ -47,7 +52,7 @@ const Recipe: React.FC<RecipeProps> = () => {
                     <div className="titleBlock">
                         <h2>
                             {
-                                recipeInfo?.title
+                                title
                             }
                         </h2>
                     </div>
@@ -122,12 +127,12 @@ const Recipe: React.FC<RecipeProps> = () => {
                             </div>
                         </div>
                         <div className="shortInfo">
-                            <p dangerouslySetInnerHTML={{__html: recipeInfo?.summary || ""}}>
+                            <p dangerouslySetInnerHTML={{__html: summary || ""}}>
                                 {
 
                                 }
                             </p>
-                            <img src={recipeInfo?.image} alt="recipePhoto"/>
+                            <img src={image} alt="recipePhoto"/>
                             <div className="shareBlock">
                                 <div className="grayLine"></div>
                                 <ul>
@@ -208,7 +213,7 @@ const Recipe: React.FC<RecipeProps> = () => {
 
                             <ul>
                                 {
-                                    recipeInfo?.extendedIngredients.map(ing => {
+                                    extendedIngredients?.map(ing => {
                                         return (
                                             <li key={ing.id}><input type="checkbox"/><span>{ing.original}</span></li>
                                         )
@@ -222,9 +227,8 @@ const Recipe: React.FC<RecipeProps> = () => {
                             </h2>
                             <div className="steps">
                                 <ul>
-
                                     {
-                                        analyzedInstructions?.steps.map((s, i) => {
+                                        analyzedInstructions && analyzedInstructions[0].steps.map((s, i) => {
                                             return (
                                                 <li key={i}>
                                                     <span>{s.number}</span>

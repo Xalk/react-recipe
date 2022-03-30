@@ -5,21 +5,20 @@ import {recipeAPI} from "../../api/api";
 
 // Define a type for the slice state
 interface recipeInfoState {
-    recipeInfo: IRecipe | null,
+    recipeInfo: IRecipe,
     isLoading: boolean
 }
 
 // Define the initial state using that type
 const initialState: recipeInfoState = {
-    recipeInfo: null,
+    recipeInfo: {} as IRecipe,
     isLoading: false
 }
 
 export const fetchRecipeInfo = createAsyncThunk<IRecipe, string>(
-    'recipes/getRecipeInfo',
+    'recipeInfo/getRecipeInfo',
     async (id, thunkAPI) => {
         const data: IRecipe = await recipeAPI.getRecipeInfo(id)
-        // thunkAPI.dispatch(setIsLoading(false))
         return data;
     }
 )
