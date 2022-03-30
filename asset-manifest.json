@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-recipe/static/css/main.54b842ab.css",
-    "main.js": "/react-recipe/static/js/main.07a1d42c.js",
+    "main.css": "/react-recipe/static/css/main.f5185a0c.css",
+    "main.js": "/react-recipe/static/js/main.af96fc44.js",
     "static/media/bg-30.jpg": "/react-recipe/static/media/bg-30.0fc14917a229b0cc74f4.jpg",
     "static/media/bg2.jpg": "/react-recipe/static/media/bg2.9359720a0cf1ff5bfbda.jpg",
     "static/media/about-2.jpg": "/react-recipe/static/media/about-2.dde7a68748a63afcf187.jpg",
@@ -21,11 +21,11 @@
     "static/media/facebook-brands.svg": "/react-recipe/static/media/facebook-brands.a7c042f8776a5e7f3831bce88fd6285b.svg",
     "static/media/hamburger-menu.svg": "/react-recipe/static/media/hamburger-menu.68a08bc2c19ad4dad03a93969c017a5c.svg",
     "static/media/printBtn.svg": "/react-recipe/static/media/printBtn.9596d669eb65636a5257eb5a7038ebe8.svg",
-    "main.54b842ab.css.map": "/react-recipe/static/css/main.54b842ab.css.map",
-    "main.07a1d42c.js.map": "/react-recipe/static/js/main.07a1d42c.js.map"
+    "main.f5185a0c.css.map": "/react-recipe/static/css/main.f5185a0c.css.map",
+    "main.af96fc44.js.map": "/react-recipe/static/js/main.af96fc44.js.map"
   },
   "entrypoints": [
-    "static/css/main.54b842ab.css",
-    "static/js/main.07a1d42c.js"
+    "static/css/main.f5185a0c.css",
+    "static/js/main.af96fc44.js"
   ]
 }
