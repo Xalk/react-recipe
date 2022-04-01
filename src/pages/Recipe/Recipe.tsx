@@ -1,15 +1,17 @@
 import React, {useEffect} from "react";
-import ava from "../assets/ava.jpeg";
-import printBtn from "../assets/printBtn.svg";
-import fullScreenBtn from "../assets/fullScreenBtn.svg";
-import star from "../assets/star.svg";
-import favInactive from "../assets/fav-inactive .svg";
-import burger from "../assets/buger.jpg";
-import clock from "../assets/clock.svg";
+import ava from "../../assets/ava.jpeg";
+import printBtn from "../../assets/printBtn.svg";
+import fullScreenBtn from "../../assets/fullScreenBtn.svg";
+import star from "../../assets/star.svg";
+import favInactive from "../../assets/fav-inactive .svg";
+import burger from "../../assets/buger.jpg";
+import clock from "../../assets/clock.svg";
 import {useParams} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../hooks/hooks";
-import {fetchRecipeInfo} from "../redux/features/recipeInfoSlice";
-import Loader from "../components/common/Loader/Loader";
+import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
+import {fetchRecipeInfo} from "../../redux/features/recipeInfoSlice";
+import Loader from "../../components/common/Loader/Loader";
+
+import s from "./Recipe.module.scss";
 
 interface RecipeProps {
 
@@ -48,8 +50,8 @@ const Recipe: React.FC<RecipeProps> = () => {
             {isLoading ? (
                     <Loader/>
                 )
-                : <div className="recipe">
-                    <div className="titleBlock">
+                : <div className={s.recipe}>
+                    <div className={s.titleBlock}>
                         <h2>
                             {
                                 title
@@ -93,10 +95,10 @@ const Recipe: React.FC<RecipeProps> = () => {
                 */}
 
 
-                    <div className="recipeContent">
-                        <div className="recipeHeader">
-                            <div className="rightSide">
-                                <div className="recipeAuthor">
+                    <div className={s.recipeContent}>
+                        <div className={s.recipeHeader}>
+                            <div className={s.rightSide}>
+                                <div className={s.recipeAuthor}>
                                     <img src={ava} alt="avatar"/>
                                     <ul>
                                         <li>AUTHOR</li>
@@ -106,8 +108,8 @@ const Recipe: React.FC<RecipeProps> = () => {
                                 <img src={printBtn} alt="print" width={36}/>
                                 <img src={fullScreenBtn} alt="fullScreen" width={36}/>
                             </div>
-                            <div className="leftSide">
-                                <div className="rating">
+                            <div className={s.leftSide}>
+                                <div className={s.rating}>
                                     <p>RATING</p>
                                     <ul>
                                         <li><img src={star} alt="star" width={16}/></li>
@@ -117,7 +119,7 @@ const Recipe: React.FC<RecipeProps> = () => {
                                         <li><img src={star} alt="star" width={16}/></li>
                                     </ul>
                                 </div>
-                                <div className="difficulty">
+                                <div className={s.difficulty}>
                                     <ul>
                                         <li>Difficulty</li>
                                         <li>Intermediate</li>
@@ -126,15 +128,15 @@ const Recipe: React.FC<RecipeProps> = () => {
                                 <img src={favInactive} alt="fav" width={32}/>
                             </div>
                         </div>
-                        <div className="shortInfo">
+                        <div className={s.shortInfo}>
                             <p dangerouslySetInnerHTML={{__html: summary || ""}}>
                                 {
 
                                 }
                             </p>
                             <img src={image} alt="recipePhoto"/>
-                            <div className="shareBlock">
-                                <div className="grayLine"></div>
+                            <div className={s.shareBlock}>
+                                <div className={s.grayLine}></div>
                                 <ul>
                                     <li>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
@@ -177,9 +179,9 @@ const Recipe: React.FC<RecipeProps> = () => {
                                         <span>Share</span>
                                     </li>
                                 </ul>
-                                <div className="grayLine"></div>
+                                <div className={s.grayLine}></div>
                             </div>
-                            <div className="timeBlock">
+                            <div className={s.timeBlock}>
                                 <ul>
                                     <li>
                                         <img src={clock} alt=""/>
@@ -208,7 +210,7 @@ const Recipe: React.FC<RecipeProps> = () => {
                                 </ul>
                             </div>
                         </div>
-                        <div className="ingredients">
+                        <div className={s.ingredients}>
                             <h2>Ingredients: </h2>
 
                             <ul>
@@ -218,8 +220,9 @@ const Recipe: React.FC<RecipeProps> = () => {
                                             // <li key={ing.id}><input type="checkbox"/><span>{ing.original}</span></li>
 
                                             <li key={ing.id}>
-                                                <input type="checkbox" id={ing.id.toString()} name={ing.id.toString()} value="todo"/>
-                                                <label htmlFor={ing.id.toString()}>{ing.original}</label>
+                                                <input type="checkbox" id={ing.original} autoFocus={false}
+                                                       required={false}/>
+                                                <label htmlFor={ing.original}>{ing.original}</label>
                                             </li>
 
                                         )
@@ -227,14 +230,14 @@ const Recipe: React.FC<RecipeProps> = () => {
                                 }
                             </ul>
                         </div>
-                        <div className="instructions">
+                        <div className={s.instructions}>
                             <h2>
                                 Instructions:
                             </h2>
-                            <div className="steps">
+                            <div className={s.steps}>
                                 <ul>
                                     {
-                                        analyzedInstructions && analyzedInstructions[0].steps.map((s, i) => {
+                                        analyzedInstructions && analyzedInstructions[0]?.steps.map((s, i) => {
                                             return (
                                                 <li key={i}>
                                                     <span>{s.number}</span>

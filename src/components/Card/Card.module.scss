@@ -1,0 +1,139 @@
+//.card {
+//  width: 33%;
+//  min-width: 33%;
+//  height: 100%;
+//  padding: 10px;
+//  overflow: inherit;
+//
+//
+//  .innerCard {
+//    position: relative;
+//    transition: .15s ease-in-out;
+//    border-radius: 10px;
+//    overflow: hidden;
+//    cursor: pointer;
+//
+//    &:hover {
+//      .line {
+//        width: 25%;
+//        background: #39db7f;
+//      }
+//
+//      box-shadow: 0 15px 30px rgb(0 0 0 / 0.2);
+//      transform: translateY(-5px);
+//      transition: .15s ease-in-out;
+//    }
+//  }
+//}
+
+.card {
+  border-radius: 10px;
+  transition: .15s ease-in-out;
+  width: 33%;
+  min-width: 33%;
+  height: 100%;
+  padding: 10px;
+  overflow: inherit;
+
+
+  .innerCard {
+    position: relative;
+    transition: .15s ease-in-out;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover {
+      .line {
+        width: 25%;
+        background: #39db7f;
+      }
+
+      box-shadow: 0 15px 30px rgb(0 0 0 / 0.2);
+      transform: translateY(-5px);
+      transition: .15s ease-in-out;
+    }
+  }
+
+  a {
+    color: inherit;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .info {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+
+    .rating {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+
+      img {
+        width: 20px;
+      }
+    }
+
+    .author {
+      text-align: center;
+      opacity: 0.75;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 600;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
+    }
+  }
+
+  .line {
+    background: #ddd;
+    margin: 2px auto;
+    width: 15%;
+    height: 6px;
+    border-radius: 3px;
+    transition: 0.15s ease-in-out;
+  }
+}
+.favBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 15px;
+  padding: 6px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    transform: translateY(-2px);
+
+    svg {
+      fill: #d54e21
+    }
+  }
+
+  img {
+    width: 18px;
+    height: 16px;
+  }
+}
+
+
+@media (max-width: 760px) {
+  .card{
+    width: 100%;
+  }
+}

@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.scss';
+import './App.module.scss';
 
 
 import Header from "./components/Header/Header";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import Footer from "./components/Footer/Footer";
 import {Route, Routes} from 'react-router-dom';
-import Recipe from "./pages/Recipe";
+import Recipe from "./pages/Recipe/Recipe";
 
 const App: React.FC = () => {
     return (

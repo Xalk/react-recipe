@@ -1,0 +1,253 @@
+.header {
+  width: 100%;
+
+  .top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: white;
+    position: relative;
+    z-index: 10;
+  }
+
+  .bottom {
+    padding: 0 20px;
+
+    background-color: #0abe5f;
+
+    .menu {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .hamBlock {
+    display: none;
+
+    img {
+      cursor: pointer;
+    }
+  }
+
+  .rightSide {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+
+    button {
+      background-color: #ea675d;
+      color: #ffffff;
+      border-radius: 5px;
+      padding: 0 15px;
+      font-weight: 500;
+
+    }
+  }
+
+}
+
+.searchBlock {
+  border-radius: 5px;
+  display: flex;
+
+  input {
+    width: 75%;
+    padding: 10px;
+    border: 1px solid #e1e1e1;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    font-weight: 500;
+
+  }
+
+  span {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0abe5f;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+  }
+
+
+}
+
+.buttons {
+  font-weight: 500;
+  color: white;
+
+  ul {
+    display: flex;
+    align-items: center;
+
+    .downArrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        transition: transform 0.2s;
+        padding-left: 5px;
+      }
+
+    }
+
+    li.downArrow:hover {
+      svg {
+        transform: rotateX(180deg);
+      }
+    }
+
+    li {
+      padding: 15px 25px;
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      line-height: 21px;
+      text-align: left;
+
+
+      &:hover {
+        background-color: #1acc6d;
+
+
+        ul.dropdown {
+          visibility: visible;
+          opacity: 1;
+
+          li {
+            visibility: visible;
+            opacity: 1;
+
+            &:hover {
+              background-color: initial;
+              color: #ea675d;
+            }
+          }
+        }
+      }
+
+      ul {
+        li {
+          color: #d2d2d2;
+        }
+      }
+
+      ul.dropdown {
+        color: white;
+        min-width: 100%; /* Set width of the dropdown */
+        background-color: #20282b;
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        z-index: 999;
+        left: 0;
+        top: 52px;
+        transition: opacity .2s ease-in-out, visibility .2s ease-in-out;
+        border-radius: 0 0 5px 5px;
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+
+
+      }
+
+    }
+  }
+}
+
+.social {
+  display: flex;
+  gap: 20px;
+
+  img {
+    width: 25px;
+    opacity: 0.5;
+    transition: opacity 0.1s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+
+@media (max-width: 760px) {
+  .header {
+    .hamBlock {
+      display: initial;
+    }
+  }
+
+
+  .header {
+    position: relative;
+
+    .bottom {
+      width: 100%;
+      position: absolute;
+      z-index: 2;
+      padding: 0;
+      background: white;
+      transform: translateY(-100%);
+      visibility: hidden;
+      transition: transform 0.15s ease-in-out, visibility 0.15s ease-in-out;
+
+    }
+
+    .bottom.visible {
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+
+  .menu {
+    .social {
+      display: none;
+    }
+
+    .buttons {
+      width: 100%;
+
+      ul {
+        width: 100%;
+        flex-direction: column;
+
+        .downArrow {
+          svg {
+            display: none;
+          }
+        }
+
+        li {
+          width: 100%;
+          text-align: center;
+          color: #0abe5f;
+          font-weight: 600;
+          font-size: 17px;
+          border-bottom: 1px solid #ededed;
+
+          ul {
+            display: none;
+          }
+
+          &:hover {
+            background-color: initial;
+            color: #04723f;
+          }
+        }
+
+
+      }
+    }
+  }
+}
