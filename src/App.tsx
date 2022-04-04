@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.module.scss';
+import './App.scss';
 
 
 import Header from "./components/Header/Header";
@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 import Footer from "./components/Footer/Footer";
 import {Route, Routes} from 'react-router-dom';
 import Recipe from "./pages/Recipe/Recipe";
+import Login from './pages/Login/Login';
 
 const App: React.FC = () => {
     return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
             <Header/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
+                <Route path="/login" element={<Login/>}/>
                 <Route path="/recipe/:id" element={<Recipe/>}/>
             </Routes>
             <Footer/>

@@ -1,0 +1,96 @@
+
+.loginHeader {
+  background: url("../../assets/bg2.jpg") no-repeat fixed center;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  h2 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 48px;
+    line-height: 3.5rem;
+    max-width: 1080px;
+    color: white;
+    text-align: center;
+  }
+}
+
+.loginContainer {
+  padding: 48px 30px;
+}
+
+
+form {
+
+  max-width: 350px;
+  margin: 0 auto;
+
+  h3 {
+    color: #7b858b;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 32px;
+  }
+}
+
+.inputBlock {
+  color: #333333;
+  padding-bottom: 20px;
+
+  label {
+    display: block;
+    line-height: 1rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    margin-bottom: 10px;
+  }
+
+
+  input {
+    display: block;
+    width: 100%;
+    padding: 0 15px;
+    line-height: 2.5rem;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0 0 20px;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 8%);
+  }
+
+
+}
+
+.btnBlock {
+  input {
+    cursor: pointer;
+    background-color: #ea675d;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-weight: 500;
+    margin-right: 25px;
+    &:hover{
+      background: #ce5f52;
+    }
+  }
+
+  a {
+    font-size: 16px;
+    cursor: pointer;
+    color: #0abe5f;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}

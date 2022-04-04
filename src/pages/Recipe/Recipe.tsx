@@ -217,14 +217,11 @@ const Recipe: React.FC<RecipeProps> = () => {
                                 {
                                     extendedIngredients?.map(ing => {
                                         return (
-                                            // <li key={ing.id}><input type="checkbox"/><span>{ing.original}</span></li>
-
                                             <li key={ing.id}>
                                                 <input type="checkbox" id={ing.original} autoFocus={false}
                                                        required={false}/>
                                                 <label htmlFor={ing.original}>{ing.original}</label>
                                             </li>
-
                                         )
                                     })
                                 }
