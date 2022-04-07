@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import s from "./Login.module.scss";
-import MyLoginForm from "./MyLoginForm";
+import SignInForm from "./SignInForm";
+import RegisterForm from "./RegisterForm";
 
 interface LoginProps {
 
@@ -9,7 +10,7 @@ interface LoginProps {
 
 const Login: React.FC<LoginProps> = () => {
 
-    const [loginMode, setLoginMode] = useState(false);
+    const [formType, setFormType] = useState<"signIn" | "register">("signIn");
 
     return (
         <div>
@@ -17,7 +18,8 @@ const Login: React.FC<LoginProps> = () => {
                 <h2>User Profile</h2>
             </div>
             <div className={s.loginContainer}>
-                <MyLoginForm isRegister={loginMode} setLoginMode={setLoginMode}/>
+                {formType ==="signIn" && <SignInForm onOpenSignIn={()=>setFormType("register")}/>}
+                {formType ==="register" && <RegisterForm onOpenRegister={()=>setFormType("signIn")}/>}
             </div>
         </div>
     );

@@ -1,12 +1,14 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {recipesSlice} from "./features/recipesSlice";
 import {recipeInfoSlice} from "./features/recipeInfoSlice";
+import {userSlice} from "./features/userSlice";
 
 
 export const store = configureStore({
     reducer: {
         recipes: recipesSlice.reducer,
-        recipePage: recipeInfoSlice.reducer
+        recipePage: recipeInfoSlice.reducer,
+        user: userSlice.reducer
     },
 });
 

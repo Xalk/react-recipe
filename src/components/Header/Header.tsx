@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import logo from "../../assets/logoRefus.svg";
 import search from "../../assets/search.svg";
 import fb from "../../assets/facebook-brands.svg";
@@ -9,6 +9,9 @@ import hamMenu from "../../assets/hamburger-menu.svg";
 import {NavLink} from "react-router-dom";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import s from "./Header.module.scss";
+import {authAPI} from "../../api/api";
+import {useAppDispatch} from "../../hooks/hooks";
+import {setUser} from "../../redux/features/userSlice";
 
 interface HeaderProps {
 
@@ -18,10 +21,24 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = () => {
 
     const {width} = useWindowDimensions();
-
+    const dispatch = useAppDispatch();
 
     const [isMenuVisible, setIsMenuVisible] = useState(false)
 
+    useEffect(()=>{
+        initUser();
+    }, [])
+
+    const initUser = async () => {
+       try {
+           const data = await authAPI.getMe();
+           console.log(data.data)
+           dispatch(setUser(data.data));
+       }catch (e){
+           console.log(e);
+       }
+    }
+    
     return (
         <div className={s.header}>
             <div className={s.top}>
@@ -78,7 +95,9 @@ const Header: React.FC<HeaderProps> = () => {
                                 </ul>
                             </li>
                             <li>Blog</li>
-                            <li>Profile</li>
+                                <NavLink to="/profile">
+                                    <li>Profile</li>
+                                </NavLink>
                         </ul>
                     </div>
                     <div className={s.social}>
