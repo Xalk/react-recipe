@@ -130,11 +130,11 @@ const Recipe: React.FC<RecipeProps> = () => {
                         </div>
                         <div className={s.shortInfo}>
                             <p dangerouslySetInnerHTML={{__html: summary || ""}}>
-                                {
-
-                                }
                             </p>
-                            <img src={image} alt="recipePhoto"/>
+                            <div className={s.imgContainer}>
+                                <img src={image} alt="recipePhoto"/>
+                            </div>
+
                             <div className={s.shareBlock}>
                                 <div className={s.grayLine}></div>
                                 <ul>

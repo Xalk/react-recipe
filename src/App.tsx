@@ -10,6 +10,7 @@ import Recipe from "./pages/Recipe/Recipe";
 import Login from './pages/Login/Login';
 import Profile from "./pages/Profile/Profile";
 import {useAppSelector} from "./hooks/hooks";
+import AddNewRecipe from "./pages/AddNewRecipe/AddNewRecipe";
 
 const App: React.FC = () => {
 
@@ -18,15 +19,16 @@ const App: React.FC = () => {
 
     return (
 
-
         <div className="wrapper">
 
             <Header/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/profile" element={data ? <Profile/> : <Navigate replace to="/login"/>}/>
-                <Route path="/login" element={data ? <Navigate replace to="/profile"/> : <Login/>}/>
+                <Route path="/profile" element={data ? <Profile/> : <Login/>}/>
+                {/*<Route path="/profile" element={data ? <Profile/> : <Navigate replace to="/login"/>}/>*/}
+                {/*<Route path="/login" element={data ? <Navigate replace to="/profile"/> : <Login/>}/>*/}
                 <Route path="/recipe/:id" element={<Recipe/>}/>
+                <Route path="/profile/add-new-recipe" element={<AddNewRecipe/>}/>
             </Routes>
             <Footer/>
 

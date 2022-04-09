@@ -83,6 +83,8 @@
 }
 
 .shortInfo {
+  margin-top: 50px;
+
   p {
     color: #7b858b;
     font-family: 'Roboto Slab', serif;
@@ -95,13 +97,55 @@
     margin-bottom: 32px;
     width: 100%;
   }
+
+  .inputBlock {
+    color: #333333;
+    padding-bottom: 20px;
+
+    label {
+      display: block;
+      line-height: 1rem;
+      font-family: 'Roboto', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      margin-bottom: 10px;
+    }
+
+
+    input, textarea {
+      display: block;
+      width: 100%;
+      padding: 0 15px;
+      line-height: 2.5rem;
+      border: 1px solid #ddd;
+      background: #fff;
+      font-size: 1rem;
+      font-weight: 400;
+      margin: 0 0 20px;
+      border-radius: 3px;
+      box-shadow: 0 1px 1px rgb(0 0 0 / 8%);
+
+      &:focus {
+        border-color: #0abe5f
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+      max-height: 300px;
+    }
+
+  }
+
 }
 
-.imgContainer{
+.imgContainer {
   max-width: 560px;
   margin: 0 auto;
 
-  img{
+  img {
     width: 100%;
   }
 }
@@ -175,6 +219,29 @@
     color: black;
     font-weight: 600;
 
+  }
+
+  input {
+    padding: 0 10px;
+    margin-right: 10px;
+    max-width: 50px;
+    line-height: 2.5rem;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 8%);
+    border-radius: 3px;
+
+    &:focus {
+      border-color: #0abe5f
+    }
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 
   ul {
@@ -255,6 +322,34 @@
 
   }
 }
+
+.addIng {
+  display: flex;
+  align-items: center;
+  margin-top: 35px;
+
+  input {
+    padding: 0 10px;
+    margin-right: 10px;
+    line-height: 2rem;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 8%);
+    border-radius: 3px;
+
+    &:focus {
+      border-color: #0abe5f;
+    }
+  }
+
+  img {
+    cursor: pointer;
+  }
+
+}
+
 
 .instructions {
   h2 {
@@ -373,4 +468,16 @@
       gap: 25px;
     }
   }
+}
+
+.greenBtn {
+  margin-top: 24px;
+  background-color: #0abe5f;
+  color: white;
+  font-weight: 600;
+  padding: 16px 24px;
+  border-radius: 3px;
+  font-size: 19px;
+  line-height: 16px;
+  margin-bottom: 20px;
 }
