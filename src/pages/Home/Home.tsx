@@ -26,7 +26,7 @@ const Home: React.FC<HomeProps> = () => {
     const {width} = useWindowDimensions();
 
     const dispatch = useAppDispatch();
-    const {recipesList, sliderRecipes} = useAppSelector(state => state.recipes)
+    const {recipesList, sliderRecipes} = useAppSelector(state => state.home)
 
 
     useEffect(() => {
