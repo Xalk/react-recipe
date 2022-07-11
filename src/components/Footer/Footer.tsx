@@ -15,7 +15,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = () => {
 
-    const isLoading = useAppSelector(state => state.recipePage.isLoading);
+    const isLoading = useAppSelector(state => state.recipeDetails.isLoading);
 
 
     return (

@@ -7,7 +7,7 @@ import {userSlice} from "./features/userSlice";
 export const store = configureStore({
     reducer: {
         recipes: recipesSlice.reducer,
-        recipePage: recipeInfoSlice.reducer,
+        recipeDetails: recipeInfoSlice.reducer,
         user: userSlice.reducer
     },
 });

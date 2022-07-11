@@ -59,6 +59,16 @@ const AddNewRecipe: React.FC<RecipeProps> = () => {
             }
 
         });
+
+        console.log({
+            title,
+            summary,
+            prepTime,
+            cookTime,
+            ingredientsList,
+            instructionsList,
+
+        })
     }
 
 
@@ -70,8 +80,6 @@ const AddNewRecipe: React.FC<RecipeProps> = () => {
                         {title}
                     </h2>
                 </div>
-
-
                 <div className={s.recipeContent}>
                     <div className={s.shortInfo}>
 
@@ -93,7 +101,10 @@ const AddNewRecipe: React.FC<RecipeProps> = () => {
                         </div>
 
                         <div className={s.imgContainer}>
-                            <img src={img} alt="recipePhoto"/>
+                            <img
+                                src="https://storage.googleapis.com/download/storage/v1/b/laravel-fb-fb148.appspot.com/o/Images%2Frecipe_1649705186.png?generation=1649705188250826&alt=media"
+                                alt="recipePhoto"/>
+                            <input type="file" name="image" className="form-control"/>
                         </div>
                         <div className={s.timeBlock}>
                             <ul>

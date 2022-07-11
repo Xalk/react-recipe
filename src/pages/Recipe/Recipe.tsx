@@ -28,8 +28,8 @@ const Recipe: React.FC<RecipeProps> = () => {
         extendedIngredients,
         analyzedInstructions,
         title
-    } = useAppSelector(state => state.recipePage.recipeInfo);
-    const isLoading = useAppSelector(state => state.recipePage.isLoading);
+    } = useAppSelector(state => state.recipeDetails.recipeInfo);
+    const isLoading = useAppSelector(state => state.recipeDetails.isLoading);
 
 
     useEffect(() => {
