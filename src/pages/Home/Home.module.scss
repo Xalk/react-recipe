@@ -41,78 +41,6 @@
   max-width: 1080px;
   margin: 50px auto;
   padding: 0 30px 50px;
-
-
-  .card {
-    cursor: pointer;
-    color: #333333;
-    overflow: hidden;
-    border-radius: 10px;
-    transition: .15s ease-in-out;
-
-    &:hover {
-      .line {
-        width: 25%;
-        background: #39db7f;
-      }
-
-      box-shadow: 0 14px 46px rgb(0 0 0 / 0.1);
-      transform: translateY(-5px);
-      transition: .15s ease-in-out;
-    }
-
-    .rating {
-      display: flex;
-      justify-content: center;
-      gap: 5px;
-
-      img {
-        width: 20px;
-      }
-    }
-
-
-    a {
-      color: inherit;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .info {
-      background-color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      padding: 15px;
-
-      .author {
-        text-align: center;
-        opacity: 0.75;
-      }
-
-      .title {
-        font-size: 20px;
-        font-weight: 600;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-
-      }
-    }
-
-    .line {
-      background: #ddd;
-      margin: 2px auto;
-      width: 15%;
-      height: 6px;
-      border-radius: 3px;
-      transition: 0.15s ease-in-out;
-    }
-  }
 }
 
 .splide__track {
@@ -193,10 +121,14 @@
 }
 
 .recipesGrid {
-  display: flex;
-  flex-wrap: wrap;
   max-width: 1080px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+
 
   //.card {
   //  width: 33%;
@@ -272,6 +204,10 @@
     flex-direction: column;
   }
 
+  .recipesGrid {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 20px;
+  }
 
   .card {
     width: 100%;

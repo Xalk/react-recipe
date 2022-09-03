@@ -8,7 +8,7 @@ import burger from "../../assets/buger.jpg";
 import clock from "../../assets/clock.svg";
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
-import {fetchRecipeInfo} from "../../redux/features/recipeInfoSlice";
+import {fetchRecipeInfo} from "../../redux/features/recipeSlice";
 import Loader from "../../components/common/Loader/Loader";
 
 import s from "./Recipe.module.scss";
@@ -29,8 +29,8 @@ const Recipe: React.FC<RecipeProps> = () => {
         extendedIngredients,
         analyzedInstructions,
         title
-    } = useAppSelector(state => state.recipeDetails.recipeInfo);
-    const isLoading = useAppSelector(state => state.recipeDetails.isLoading);
+    } = useAppSelector(state => state.recipe.recipeInfo);
+    const isLoading = useAppSelector(state => state.recipe.isLoading);
 
 
     useEffect(() => {

@@ -2,15 +2,12 @@ import React, {useEffect} from "react";
 import {Splide, SplideSlide} from "@splidejs/react-splide";
 import '@splidejs/splide/dist/css/splide.min.css';
 
-import burger from "../../assets/buger.jpg";
-import star from "../../assets/star.svg";
 import about1 from "../../assets/about-1.jpg";
 import about2 from "../../assets/about-2.jpg";
 import about3 from "../../assets/about-3.jpg";
-import favInactive from "../../assets/fav-inactive .svg";
 import {NavLink} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
-import {fetchRecipes, setRecipes} from "../../redux/features/recipesSlice";
+import {fetchRecipes, setRecipes} from "../../redux/features/homeSlice";
 import Card from "../../components/Card/Card";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import s from "./Home.module.scss";
@@ -63,27 +60,7 @@ const Home: React.FC<HomeProps> = () => {
                                 return (
                                     <SplideSlide key={r.id}>
                                         <NavLink to={`/recipe/${r.id}`}>
-                                            <div className={s.card}>
-
-                                                <img src={r.image} alt="burger"/>
-                                                <div className={s.info}>
-                                                    <div className={s.rating}>
-                                                        <img src={star} alt="star"/>
-                                                        <img src={star} alt="star"/>
-                                                        <img src={star} alt="star"/>
-                                                        <img src={star} alt="star"/>
-                                                        <img src={star} alt="star"/>
-                                                    </div>
-                                                    <div className={s.title}>
-                                                        {r.title}
-                                                    </div>
-                                                    <div className={s.line}></div>
-                                                    <div className={s.author}>
-                                                        By <strong>Justin S.</strong>
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                                            <Card id={r.id} title={r.title} image={r.image}/>
                                         </NavLink>
                                     </SplideSlide>
                                 )

@@ -24,7 +24,7 @@ export const fetchRecipeInfo = createAsyncThunk<IRecipe, string>(
 )
 
 
-export const recipeInfoSlice = createSlice({
+export const recipeSlice = createSlice({
     name: 'recipeInfo',
     initialState,
     reducers: {
@@ -44,6 +44,6 @@ export const recipeInfoSlice = createSlice({
     }
 })
 
-export const {setIsLoading} = recipeInfoSlice.actions;
+export const {setIsLoading} = recipeSlice.actions;
 
-export default recipeInfoSlice.reducer;
+export default recipeSlice.reducer;

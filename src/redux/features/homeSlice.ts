@@ -16,16 +16,16 @@ const initialState: RecipesState = {
 }
 
 export const fetchRecipes = createAsyncThunk<IRecipe[], number>(
-    'recipes/getRecipes',
-    async (limit, thunkAPI) => {
+    'home/getRecipes',
+    async (limit) => {
         const data: IRecipe[] = await recipeAPI.getRecipesList(limit)
         return data;
     }
 )
 
 
-export const recipesSlice = createSlice({
-    name: 'recipes',
+export const homeSlice = createSlice({
+    name: 'home',
     initialState,
     reducers: {
         setRecipes(state, action) {
@@ -42,6 +42,6 @@ export const recipesSlice = createSlice({
     }
 })
 
-export const {setRecipes} = recipesSlice.actions;
+export const {setRecipes} = homeSlice.actions;
 
-export default recipesSlice.reducer;
+export default homeSlice.reducer;

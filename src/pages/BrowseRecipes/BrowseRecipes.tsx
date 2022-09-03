@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import SubHeader from "../../components/common/SubHeader/SubHeader";
 import s from "./BrowseRecipes.module.scss"
 import search from "../../assets/search.svg";
+import Card from "../../components/Card/Card";
 
 interface BrowseRecipesProps {
 
@@ -68,6 +69,17 @@ const BrowseRecipes: React.FC<BrowseRecipesProps> = () => {
                         <button><img src={search} alt="search" width={20} height={20}/></button>
                     </div>
                 </div>
+
+                <div className={s.grid}>
+
+                    <Card id={1} title={"Crab and Shrimp Burgers With Garlic Grits Fries"}
+                          image={"https://spoonacular.com/recipeImages/640266-556x370.jpg"}/><Card id={1} title={"Crab and Shrimp Burgers With Garlic Grits Fries"}
+                          image={"https://spoonacular.com/recipeImages/640266-556x370.jpg"}/><Card id={1} title={"Crab and Shrimp Burgers With Garlic Grits Fries"}
+                          image={"https://spoonacular.com/recipeImages/640266-556x370.jpg"}/><Card id={1} title={"Crab and Shrimp Burgers With Garlic Grits Fries"}
+                          image={"https://spoonacular.com/recipeImages/640266-556x370.jpg"}/>
+
+                </div>
+
             </div>
         </>
 

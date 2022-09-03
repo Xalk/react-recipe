@@ -1,35 +1,8 @@
-//.card {
-//  width: 33%;
-//  min-width: 33%;
-//  height: 100%;
-//  padding: 10px;
-//  overflow: inherit;
-//
-//
-//  .innerCard {
-//    position: relative;
-//    transition: .15s ease-in-out;
-//    border-radius: 10px;
-//    overflow: hidden;
-//    cursor: pointer;
-//
-//    &:hover {
-//      .line {
-//        width: 25%;
-//        background: #39db7f;
-//      }
-//
-//      box-shadow: 0 15px 30px rgb(0 0 0 / 0.2);
-//      transform: translateY(-5px);
-//      transition: .15s ease-in-out;
-//    }
-//  }
-//}
 
 .card {
   border-radius: 10px;
   transition: .15s ease-in-out;
-  width: 33%;
+  //width: 33%;
   min-width: 33%;
   height: 100%;
   padding: 10px;
@@ -42,7 +15,7 @@
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
-
+    box-shadow: 0 14px 46px rgb(0 0 0 / 0.1);
     &:hover {
       .line {
         width: 25%;
@@ -56,7 +29,7 @@
   }
 
   a {
-    color: inherit;
+    color: #000000;
   }
 
   img {
