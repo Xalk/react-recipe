@@ -12,6 +12,7 @@ import {fetchRecipeInfo} from "../../redux/features/recipeInfoSlice";
 import Loader from "../../components/common/Loader/Loader";
 
 import s from "./Recipe.module.scss";
+import SubHeader from "../../components/common/SubHeader/SubHeader";
 
 interface RecipeProps {
 
@@ -51,13 +52,7 @@ const Recipe: React.FC<RecipeProps> = () => {
                     <Loader/>
                 )
                 : <div className={s.recipe}>
-                    <div className={s.titleBlock}>
-                        <h2>
-                            {
-                                title
-                            }
-                        </h2>
-                    </div>
+                    <SubHeader title={title}/>
 
                     {/*
                 <div className="popular">

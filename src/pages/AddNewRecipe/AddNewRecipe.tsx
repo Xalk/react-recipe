@@ -6,6 +6,7 @@ import addBtn from "../../assets/add-btn.svg";
 
 
 import s from "./AddNewRecipe.module.scss";
+import SubHeader from "../../components/common/SubHeader/SubHeader";
 
 type Input = {
     id: number;
@@ -75,11 +76,7 @@ const AddNewRecipe: React.FC<RecipeProps> = () => {
     return (
         <>
             <div className={s.recipe}>
-                <div className={s.titleBlock}>
-                    <h2>
-                        {title}
-                    </h2>
-                </div>
+                <SubHeader title={title}/>
                 <div className={s.recipeContent}>
                     <div className={s.shortInfo}>
 
