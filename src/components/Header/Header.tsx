@@ -77,7 +77,10 @@ const Header: React.FC<HeaderProps> = () => {
                                 </li>
                             }
                             <li>Home</li>
-                            <li>All Recipes</li>
+                            <NavLink to="/all-recipes">
+                                <li>All Recipes</li>
+                            </NavLink>
+
                             <li className={s.downArrow}>
                                 <span>Cuisines</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px"

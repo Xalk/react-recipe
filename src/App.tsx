@@ -11,6 +11,7 @@ import Login from './pages/Login/Login';
 import Profile from "./pages/Profile/Profile";
 import {useAppSelector} from "./hooks/hooks";
 import AddNewRecipe from "./pages/AddNewRecipe/AddNewRecipe";
+import BrowseRecipes from "./pages/BrowseRecipes/BrowseRecipes";
 
 const App: React.FC = () => {
 
@@ -29,6 +30,7 @@ const App: React.FC = () => {
                 {/*<Route path="/login" element={data ? <Navigate replace to="/profile"/> : <Login/>}/>*/}
                 <Route path="/recipe/:id" element={<Recipe/>}/>
                 <Route path="/profile/add-new-recipe" element={<AddNewRecipe/>}/>
+                <Route path="/all-recipes" element={<BrowseRecipes/>}/>
             </Routes>
             <Footer/>
 
