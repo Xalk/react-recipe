@@ -35,3 +35,10 @@ export interface IRecipe {
         }
     ]
 }
+
+export interface IResFilteredRecipes {
+    results: IRecipe[],
+    offset: number,
+    number: number,
+    totalResults: number
+}

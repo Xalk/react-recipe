@@ -1,8 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import SubHeader from "../../components/common/SubHeader/SubHeader";
 import s from "./BrowseRecipes.module.scss"
 import search from "../../assets/search.svg";
 import Card from "../../components/Card/Card";
+import {useAppSelector} from "../../hooks/hooks";
+import {useDispatch} from "react-redux";
+import {fetchFilteredRecipes, setPage} from "../../redux/features/filterSlice";
+import Pagination from "../../components/Pagination/Pagination";
+import ArrowSvg from "../../components/common/ArrowSvg/ArrowSvg";
 
 interface BrowseRecipesProps {
 
@@ -13,6 +18,20 @@ const BrowseRecipes: React.FC<BrowseRecipesProps> = () => {
 
     const [isFilterOpen, setIsFilterOpen] = useState(false);
 
+    const {items, offset, totalResults} = useAppSelector(state => state.filter)
+
+    const dispatch = useDispatch()
+
+    const onChangePage = (page: number) => {
+        dispatch(setPage(page))
+    }
+
+
+    useEffect(() => {
+        dispatch(fetchFilteredRecipes(offset))
+    }, [offset])
+
+
 
     return (
         <>
@@ -22,14 +41,7 @@ const BrowseRecipes: React.FC<BrowseRecipesProps> = () => {
                 <div className={s.inputs}>
                     <div className={s.filterBlock}>
                         <div className={s.btn} onClick={() => setIsFilterOpen(!isFilterOpen)}>Browse
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px"
-                                 width="22px" height="20px" viewBox="0 0 960 560" fill="#fff"
-                                 enableBackground="new 0 0 960 560">
-                                <g id="Rounded_Rectangle_33_copy_4_1_">
-                                    <path
-                                        d="M480,344.181L268.869,131.889c-15.756-15.859-41.3-15.859-57.054,0c-15.754,15.857-15.754,41.57,0,57.431l237.632,238.937   c8.395,8.451,19.562,12.254,30.553,11.698c10.993,0.556,22.159-3.247,30.555-11.698l237.631-238.937   c15.756-15.86,15.756-41.571,0-57.431s-41.299-15.859-57.051,0L480,344.181z"/>
-                                </g>
-                            </svg>
+                            <ArrowSvg/>
                         </div>
                         {
                             isFilterOpen && (
@@ -62,7 +74,7 @@ const BrowseRecipes: React.FC<BrowseRecipesProps> = () => {
                         <input type="text" placeholder="Find a recipe..."/>
                         <select name="" id="">
                             <option value="Newest first">Newest first</option>
-                            <option value="Oldest first">Newest first</option>
+                            <option value="Popularity">Popularity</option>
                             <option value="Alphabetical (A-Z)">Alphabetical (A-Z)</option>
                             <option value="Alphabetical (Z-A)">Alphabetical (Z-A)</option>
                         </select>
@@ -72,14 +84,12 @@ const BrowseRecipes: React.FC<BrowseRecipesProps> = () => {
 
                 <div className={s.grid}>
 
-                    <Card id={1} title={"Crab and Shrimp Burgers With Garlic Grits Fries"}
-                          image={"https://spoonacular.com/recipeImages/640266-556x370.jpg"}/><Card id={1} title={"Crab and Shrimp Burgers With Garlic Grits Fries"}
-                          image={"https://spoonacular.com/recipeImages/640266-556x370.jpg"}/><Card id={1} title={"Crab and Shrimp Burgers With Garlic Grits Fries"}
-                          image={"https://spoonacular.com/recipeImages/640266-556x370.jpg"}/><Card id={1} title={"Crab and Shrimp Burgers With Garlic Grits Fries"}
-                          image={"https://spoonacular.com/recipeImages/640266-556x370.jpg"}/>
+                    {
+                        items?.map(e => <Card key={e.id} id={e.id} title={e.title} image={e.image}/>)
+                    }
 
                 </div>
-
+                <Pagination currentPage={offset} onChangePage={onChangePage} totalResults={totalResults}/>
             </div>
         </>
 

@@ -1,0 +1,53 @@
+.root {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+
+  li {
+    display: inline-block;
+
+    a {
+      text-align: center;
+      width: 45px;
+      line-height: 42px;
+      height: 45px;
+      border: 1px solid #0abe5f;
+      border-radius: 30px;
+      margin-right: 10px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #0abe5f;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.13);
+
+      &:hover {
+        background-color: #0abe5f;
+        color: #fff;
+      }
+    }
+  }
+
+  :global {
+    .selected {
+      a {
+        background-color: #0abe5f;
+        color: #fff;
+      }
+    }
+
+    .next {
+      svg {
+        transform: rotate(-90deg)
+      }
+    }
+
+    .previous {
+      svg {
+        transform: rotate(90deg)
+      }
+    }
+  }
+
+
+}

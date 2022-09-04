@@ -25,7 +25,11 @@ export let recipeAPI = {
 
     getRecipeInfo(id: string) {
         return baseApi.get<IRecipe>(`${id}/information?apiKey=${API_KEY}`).then(res => res.data)
-    }
+    },
+
+    getFilteredRecipes(limit: number) {
+        return baseApi.get(`complexSearch?sort=&apiKey=${API_KEY}&number=9&offset=${limit}`).then(res => res.data);
+    },
 }
 
 type reqUser = {
