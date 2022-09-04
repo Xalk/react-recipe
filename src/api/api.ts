@@ -1,9 +1,10 @@
 import axios from "axios";
-import {IRecipe, IUser} from "../redux/types";
+import {IFilterRecipesParams, IRecipe, IUser} from "../redux/types";
 import Cookie from "cookie-universal";
 
 
-const API_KEY = "3cd282a7c1b34edebdf4db8c41147472";
+// const API_KEY = "3cd282a7c1b34edebdf4db8c41147472"; //1
+const API_KEY = "f41fbb5089e6411cbd2a18def9d51872"; //2
 
 let baseApi = axios.create({
     baseURL: 'https://api.spoonacular.com/recipes/'
@@ -27,8 +28,8 @@ export let recipeAPI = {
         return baseApi.get<IRecipe>(`${id}/information?apiKey=${API_KEY}`).then(res => res.data)
     },
 
-    getFilteredRecipes(limit: number) {
-        return baseApi.get(`complexSearch?sort=&apiKey=${API_KEY}&number=9&offset=${limit}`).then(res => res.data);
+    getFilteredRecipes(params :IFilterRecipesParams) {
+        return baseApi.get(`complexSearch?query=${params.searchValue}&sort=${params.sort}&type=${params.browse}&cuisine=${params.browse}&sortDirection=${params.sort}&apiKey=${API_KEY}&number=9&offset=${params.offset}`).then(res => res.data);
     },
 }
 

@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
-import {IRecipe, IResFilteredRecipes} from "../types";
+import {IFilterRecipesParams, IRecipe, IResFilteredRecipes} from "../types";
 import {recipeAPI} from "../../api/api";
 
 
@@ -15,10 +15,10 @@ interface FilterState {
 }
 
 
-export const fetchFilteredRecipes = createAsyncThunk<IResFilteredRecipes, number>(
+export const fetchFilteredRecipes = createAsyncThunk<IResFilteredRecipes, IFilterRecipesParams>(
     'filter/getFilteredRecipes',
-    async (limit) => {
-        const data: IResFilteredRecipes = await recipeAPI.getFilteredRecipes(limit)
+    async (params) => {
+        const data: IResFilteredRecipes = await recipeAPI.getFilteredRecipes(params)
         console.log(data)
         return data;
     }
@@ -27,7 +27,7 @@ export const fetchFilteredRecipes = createAsyncThunk<IResFilteredRecipes, number
 
 const initialState: FilterState = {
     searchValue: "",
-    sort: "Newest first",
+    sort: "",
     browse: "",
     items: [],
     offset: 0,
@@ -43,6 +43,15 @@ export const filterSlice = createSlice({
     reducers: {
         setPage(state, action) {
             state.offset = action.payload;
+        },
+        setSort(state, action) {
+            state.sort = action.payload;
+        },
+        setBrowse(state, action) {
+            state.browse = action.payload;
+        },
+        setSearchValue(state, action) {
+            state.searchValue = action.payload;
         }
     },
     extraReducers: builder => {
@@ -55,6 +64,6 @@ export const filterSlice = createSlice({
     }
 })
 
-export const {setPage} = filterSlice.actions;
+export const {setPage, setSort, setBrowse, setSearchValue} = filterSlice.actions;
 
 export default filterSlice.reducer;

@@ -42,3 +42,10 @@ export interface IResFilteredRecipes {
     number: number,
     totalResults: number
 }
+
+export interface IFilterRecipesParams {
+    offset?:number,
+    sort?: string,
+    browse?: string,
+    searchValue?: string
+}
