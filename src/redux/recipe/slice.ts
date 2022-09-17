@@ -1,27 +1,13 @@
-import {createAsyncThunk, createSlice,} from '@reduxjs/toolkit'
-import {IRecipe} from '../types';
-import {recipeAPI} from "../../api/api";
+import {createSlice} from "@reduxjs/toolkit";
+import {IRecipe} from "../home/types";
+import {recipeInfoState} from "./types";
+import {fetchRecipeInfo} from "./asyncActions";
 
 
-// Define a type for the slice state
-interface recipeInfoState {
-    recipeInfo: IRecipe,
-    isLoading: boolean
-}
-
-// Define the initial state using that type
 const initialState: recipeInfoState = {
     recipeInfo: {} as IRecipe,
     isLoading: false
 }
-
-export const fetchRecipeInfo = createAsyncThunk<IRecipe, string>(
-    'recipeInfo/getRecipeInfo',
-    async (id, thunkAPI) => {
-        const data: IRecipe = await recipeAPI.getRecipeInfo(id)
-        return data;
-    }
-)
 
 
 export const recipeSlice = createSlice({

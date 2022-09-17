@@ -3,12 +3,15 @@ import SubHeader from "../../components/common/SubHeader/SubHeader";
 import s from "./BrowseRecipes.module.scss"
 import search from "../../assets/search.svg";
 import Card from "../../components/Card/Card";
-import {useAppSelector} from "../../hooks/hooks";
+import {useAppSelector} from "../../hooks/reduxHooks";
 import {useDispatch} from "react-redux";
-import {fetchFilteredRecipes, setBrowse, setPage, setSearchValue, setSort} from "../../redux/features/filterSlice";
+import { setBrowse, setPage, setSearchValue, setSort} from "../../redux/filter/slice";
+import { fetchFilteredRecipes} from "../../redux/filter/asyncActions";
+
 import Pagination from "../../components/Pagination/Pagination";
 import ArrowSvg from "../../components/common/ArrowSvg/ArrowSvg";
 import {useDebounce} from "../../hooks/useDebounce";
+import {selectFilter} from "../../redux/filter/selectors";
 
 interface BrowseRecipesProps {
 
@@ -21,7 +24,7 @@ const BrowseRecipes: React.FC<BrowseRecipesProps> = () => {
 
     const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-    const {items, offset, totalResults, sort, browse, searchValue} = useAppSelector(state => state.filter)
+    const {items, offset, totalResults, sort, browse, searchValue} = useAppSelector(selectFilter)
 
     const dispatch = useDispatch()
 
@@ -40,10 +43,6 @@ const BrowseRecipes: React.FC<BrowseRecipesProps> = () => {
     const onChangeSearch = (value: string) => {
         dispatch(setSearchValue(value));
     }
-
-
-
-
 
 
     useEffect(() => {

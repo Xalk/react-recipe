@@ -6,24 +6,23 @@ import about1 from "../../assets/about-1.jpg";
 import about2 from "../../assets/about-2.jpg";
 import about3 from "../../assets/about-3.jpg";
 import {NavLink} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
-import {fetchRecipes, setRecipes} from "../../redux/features/homeSlice";
+import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks";
+import {setRecipes} from "../../redux/home/slice";
+import {fetchRecipes} from "../../redux/home/asyncActions";
 import Card from "../../components/Card/Card";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import s from "./Home.module.scss";
+import {selectHome} from "../../redux/home/selectors";
 
 
-interface HomeProps {
-
-}
 
 
-const Home: React.FC<HomeProps> = () => {
+const Home: React.FC = () => {
 
     const {width} = useWindowDimensions();
 
     const dispatch = useAppDispatch();
-    const {recipesList, sliderRecipes} = useAppSelector(state => state.home)
+    const {recipesList, sliderRecipes} = useAppSelector(selectHome)
 
 
     useEffect(() => {

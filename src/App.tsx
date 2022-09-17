@@ -9,7 +9,7 @@ import {Route, Routes, Navigate} from 'react-router-dom';
 import Recipe from "./pages/Recipe/Recipe";
 import Login from './pages/Login/Login';
 import Profile from "./pages/Profile/Profile";
-import {useAppSelector} from "./hooks/hooks";
+import {useAppSelector} from "./hooks/reduxHooks";
 import AddNewRecipe from "./pages/AddNewRecipe/AddNewRecipe";
 import BrowseRecipes from "./pages/BrowseRecipes/BrowseRecipes";
 

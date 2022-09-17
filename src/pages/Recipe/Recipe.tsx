@@ -4,15 +4,15 @@ import printBtn from "../../assets/printBtn.svg";
 import fullScreenBtn from "../../assets/fullScreenBtn.svg";
 import star from "../../assets/star.svg";
 import favInactive from "../../assets/fav-inactive .svg";
-import burger from "../../assets/buger.jpg";
 import clock from "../../assets/clock.svg";
 import {useParams} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
-import {fetchRecipeInfo} from "../../redux/features/recipeSlice";
+import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks";
+import {fetchRecipeInfo} from "../../redux/recipe/asyncActions";
 import Loader from "../../components/common/Loader/Loader";
 
 import s from "./Recipe.module.scss";
 import SubHeader from "../../components/common/SubHeader/SubHeader";
+import {selectIsLoading} from "../../redux/recipe/selectors";
 
 interface RecipeProps {
 
@@ -30,7 +30,7 @@ const Recipe: React.FC<RecipeProps> = () => {
         analyzedInstructions,
         title
     } = useAppSelector(state => state.recipe.recipeInfo);
-    const isLoading = useAppSelector(state => state.recipe.isLoading);
+    const isLoading = useAppSelector(selectIsLoading);
 
 
     useEffect(() => {

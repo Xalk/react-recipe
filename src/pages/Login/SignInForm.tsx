@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import s from "./Login.module.scss";
 import {useForm, SubmitHandler} from "react-hook-form";
-import {authAPI} from "../../api/api";
-import {useAppDispatch} from "../../hooks/hooks";
-import {setUser} from "../../redux/features/userSlice";
+import {authAPI} from "../../api";
+import {useAppDispatch} from "../../hooks/reduxHooks";
+import {setUser} from "../../redux/user/slice";
 import {useNavigate} from "react-router-dom";
 import Cookie from 'cookie-universal'
 

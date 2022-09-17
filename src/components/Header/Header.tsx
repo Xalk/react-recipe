@@ -9,9 +9,9 @@ import hamMenu from "../../assets/hamburger-menu.svg";
 import {NavLink} from "react-router-dom";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import s from "./Header.module.scss";
-import {authAPI} from "../../api/api";
-import {useAppDispatch} from "../../hooks/hooks";
-import {setUser} from "../../redux/features/userSlice";
+import {authAPI} from "../../api";
+import {useAppDispatch} from "../../hooks/reduxHooks";
+import {setUser} from "../../redux/user/slice";
 import ArrowSvg from "../common/ArrowSvg/ArrowSvg";
 
 interface HeaderProps {

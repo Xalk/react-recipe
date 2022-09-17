@@ -5,8 +5,9 @@ import fb from "../../assets/facebook-brands.svg";
 import ig from "../../assets/instagram-brands.svg";
 import tw from "../../assets/twitter-brands.svg";
 import yt from "../../assets/youtube-brands.svg";
-import {useAppSelector} from "../../hooks/hooks";
+import {useAppSelector} from "../../hooks/reduxHooks";
 import s from "./Footer.module.scss";
+import {selectIsLoading} from "../../redux/recipe/selectors";
 
 interface FooterProps {
 
@@ -15,7 +16,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = () => {
 
-    const isLoading = useAppSelector(state => state.recipe.isLoading);
+    const isLoading = useAppSelector(selectIsLoading);
 
 
     return (

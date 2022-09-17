@@ -1,6 +1,8 @@
 import axios from "axios";
-import {IFilterRecipesParams, IRecipe, IUser} from "../redux/types";
 import Cookie from "cookie-universal";
+import {IRecipe} from "../redux/home/types";
+import {IFilterRecipesParams} from "../redux/filter/types";
+import {IUser} from "../redux/user/types";
 
 
 // const API_KEY = "3cd282a7c1b34edebdf4db8c41147472"; //1
@@ -28,7 +30,7 @@ export let recipeAPI = {
         return baseApi.get<IRecipe>(`${id}/information?apiKey=${API_KEY}`).then(res => res.data)
     },
 
-    getFilteredRecipes(params :IFilterRecipesParams) {
+    getFilteredRecipes(params: IFilterRecipesParams) {
         return baseApi.get(`complexSearch?query=${params.searchValue}&sort=${params.sort}&type=${params.browse}&cuisine=${params.browse}&sortDirection=${params.sort}&apiKey=${API_KEY}&number=9&offset=${params.offset}`).then(res => res.data);
     },
 }
@@ -46,7 +48,7 @@ export let authAPI = {
         return axios.get(`http://127.0.0.1:8000/api/me`, {
             headers: {
                 Authorization: "Bearer " + cookieRes
-    }
+            }
         }).then(res => res);
     },
 

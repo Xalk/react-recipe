@@ -1,11 +1,5 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
-import { IUser } from '../types';
-
-
-interface UserState {
-  data: IUser | null;
-}
-
+import {createSlice} from "@reduxjs/toolkit";
+import {UserState} from "./types";
 
 const initialState: UserState = {
     data: null
